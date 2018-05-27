@@ -5,9 +5,16 @@ name = "pypi"
 
 [packages]
 flask = "*"
+flask-restful = "*"
 
 [dev-packages]
 pylint = "*"
+pytest = "*"
+tox = "*"
+coverage = "*"
+sphinx = "*"
+sphinx-rtd-theme = "*"
+"e1839a8" = {path = ".", editable = true}
 
 [requires]
 python_version = "3.6"

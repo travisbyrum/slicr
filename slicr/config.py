@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+
+"""
+slicr.config
+~~~~~~~~~~~~
+Application configuration objects.
+
+:copyright: © 2018
+"""
+
+import os
+
+
+class Config:
+    """Default configuration for slcr application.  This object is meant for
+    consumption by `Flask <http://flask.pocoo.org/>`_.
+    """
+
+    POSTGRES_HOST = os.getenv('DB_HOST')
+    POSTGRES_PORT = int(os.getenv('DB_PORT')) if os.getenv('DB_PORT') else None
+    POSTGRES_USER = os.getenv('DB_USER', 'postgres')
+    POSTGRES_PASS = os.getenv('DB_PASS', 'postgres')
+    POSTGRES_DB = os.getenv('DB_PASS', 'postgres')
+
+    DATABASE_URI = 'postgresql://{0}:{1}@{2}:{3}/{4}'.format(
+        POSTGRES_USER,
+        POSTGRES_PASS,
+        POSTGRES_HOST,
+        str(POSTGRES_PORT),
+        POSTGRES_DB
+    )
+
+    SUPPORTED_LOCALES = ['en']
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key.upper(), value)
+
+
+class TestConfig(Config):
+    """Application testing configuration."""
+
+    DEBUG = True
+    ASSETS_DEBUG = True
+    WTF_CRSF_ENABLED = False
