@@ -39,7 +39,6 @@ def main():
     )
 
     args = parser.parse_args()
-    print(args)
 
     app = create_app(config=Config, args=args.debug)
 

@@ -1,11 +1,13 @@
 MAKEFLAGS += --silent
-COVR := $(shell which coverage)
-LINT := $(shell which pylint)
+DOCKER := $(shell which docker)
 PIPENV := $(shell which pipenv)
+PIP := $(shell which pip)
+COVR := $(PIPENV) run coverage
+LINT := $(PIPENV) run pylint
 PYTHON := $(PIPENV) run python
-API_PORT ?= 5000
 
 PKG := slicr
+API_PORT ?= 5000
 
 all: clean clean-pyc install
 
@@ -31,15 +33,19 @@ coverage:
 
 install-dev:
 	$(PIPENV) install --dev
-	$(PIPENV) install --dev -e .
 
 .PHONY: install-dev
 
 install:
-	$(PIPENV) install
-	$(PIPENV) install .
+	$(PIPENV) install --deploy --system
+	$(PIP) install .
 
 .PHONY: install
+
+uninstall:
+	$(PIPENV) uninstall --all
+
+.PHONY: uninstall
 
 lint:
 	$(LINT) $(PKG) -rn
