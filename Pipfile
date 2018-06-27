@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-restful = "*"
+flask-sqlalchemy = "*"
+webargs = "*"
 
 [dev-packages]
 pylint = "*"
@@ -14,6 +16,7 @@ tox = "*"
 coverage = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+sphinxcontrib-httpdomain = "*"
 "e1839a8" = {path = ".", editable = true}
 
 [requires]

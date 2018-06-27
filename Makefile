@@ -42,11 +42,6 @@ install:
 
 .PHONY: install
 
-uninstall:
-	$(PIPENV) uninstall --all
-
-.PHONY: uninstall
-
 lint:
 	$(LINT) $(PKG) -rn
 
@@ -63,4 +58,6 @@ test:
 .PHONY: test
 
 uninstall:
-	$(PIPENV) uninstall
+	$(PIPENV) uninstall --all
+
+.PHONY: uninstall
