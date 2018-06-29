@@ -48,7 +48,11 @@ lint:
 .PHONY: lint
 
 run:
-	$(PYTHON) bin/main.py -p $(API_PORT)
+	$(PIPENV) run slicr run \
+	-p $(API_PORT) \
+	--with-threads \
+	--debugger \
+	--reload
 
 .PHONY: run
 
