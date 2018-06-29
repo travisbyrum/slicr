@@ -3,26 +3,32 @@
 """
 slicr.routes
 ~~~~~~~~~~~~
-Application routing and controllers.
+Default application routing.
 
 :copyright: © 2018
 """
 
-from flask import Blueprint
-from flask_restful import Api
+from flask import Blueprint, redirect, current_app
 
-from slicr.resources import LinkResource, PingResource
-
-
-links_blueprint = Blueprint('link_blueprint', __name__)
-links_api = Api(links_blueprint)
+from slicr.encoder import UrlEncoder
+from slicr.models import Link
 
 
-SLICR_RESOURCES = [LinkResource, PingResource]
+default_blueprint = Blueprint('default_blueprint', __name__)
 
 
-for resource in SLICR_RESOURCES:
-    links_api.add_resource(resource, *resource.endpoints)
+@default_blueprint.route('/<string:slug>')
+def redirect_from_slug(slug):
+    """Redirects url based on short link.
 
+    :param slug: [description]
+    :type slug: [type]
+    """
 
-__all__ = ['links_blueprint']
+    decoder = UrlEncoder(salt=current_app.config.get('ENCODER_SALT'))
+
+    url_id = decoder.decode(slug)
+
+    slug_link = Link.query.filter_by(id=url_id).first()
+
+    return redirect(slug_link.url)
