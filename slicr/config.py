@@ -22,14 +22,19 @@ class Config:
     POSTGRES_PASS = os.getenv('DB_PASS', 'postgres')
     POSTGRES_DB = os.getenv('DB_PASS', 'postgres')
 
-    DATABASE_URI = 'postgresql://{0}:{1}@{2}:{3}/{4}'.format(
-        POSTGRES_USER,
-        POSTGRES_PASS,
-        POSTGRES_HOST,
-        str(POSTGRES_PORT),
-        POSTGRES_DB
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        'SQLALCHEMY_DATABASE_URI',
+        'postgresql://{0}:{1}@{2}:{3}/{4}'.format(
+            POSTGRES_USER,
+            POSTGRES_PASS,
+            POSTGRES_HOST,
+            str(POSTGRES_PORT),
+            POSTGRES_DB
+        )
     )
 
+    ENCODER_SALT = os.getenv('ENCODER_SALT', 0)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     SUPPORTED_LOCALES = ['en']
 
     def __init__(self, **kwargs):
@@ -40,6 +45,7 @@ class Config:
 class TestConfig(Config):
     """Application testing configuration."""
 
-    DEBUG = True
     ASSETS_DEBUG = True
+    DEBUG = True
+    JSONIFY_PRETTYPRINT_REGULAR = True
     WTF_CRSF_ENABLED = False
