@@ -9,6 +9,7 @@ flask-restful = "*"
 flask-sqlalchemy = "*"
 webargs = "*"
 click = "*"
+sphinx-swagger = "*"
 
 [dev-packages]
 pylint = "*"

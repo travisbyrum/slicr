@@ -56,6 +56,9 @@ run:
 
 .PHONY: run
 
+swagger.json:
+	$(PYTHON) setup.py swagger
+
 test:
 	$(PYTHON) setup.py test
 

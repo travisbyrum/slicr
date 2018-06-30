@@ -1,0 +1,1053 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "slicr",
+    "description": "URL shortener application.",
+    "license": {
+      "name": "MIT"
+    },
+    "version": "0.0.1"
+  },
+  "host": "localhost:80",
+  "basePath": "/",
+  "paths": {
+    "/link": {
+      "post": {
+        "summary": "Create shortened link.",
+        "description": "**Example request** :\n\n**Example response** :",
+        "parameters": [
+          {
+            "name": "Accept",
+            "description": "The response content type depends on Accept header",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "description": "Optional authentication token.",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)\n\nNo error",
+            "headers": {
+              "Content-Type": {
+                "description": "This depends on Accept header of request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-debug-info": {
+          "type": "desc",
+          "children": [
+            {
+              "type": "desc_signature",
+              "children": [
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "POST "
+                    }
+                  ]
+                },
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "/link"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "desc_content",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "Create shortened link."
+                    }
+                  ]
+                },
+                {
+                  "type": "comment",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":quickref: Link collection."
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example request"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "POST /links HTTP/1.1\nHost: example.com\nAccept: application/json, text/javascript\n\n{\n    \"url\": \"https://www.google.com\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example response"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "HTTP/1.1 200 OK\nVary: Accept\nContent-Type: text/javascript"
+                    }
+                  ]
+                },
+                {
+                  "type": "field_list",
+                  "children": [
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "JSON Parameters"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "literal_strong",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "url"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " ("
+                                        },
+                                        {
+                                          "type": "literal_emphasis",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "string"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": ")"
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "url for which to create short link."
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Request Headers"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "The response content type depends on\n"
+                                        },
+                                        {
+                                          "type": "literal_emphasis",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " header"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Authorization"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "Optional authentication token."
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Response Headers"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Content-Type"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "this depends on "
+                                        },
+                                        {
+                                          "type": "literal_emphasis",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "\nheader of request"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Status Codes"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "200 OK"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "No error"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "/ping": {
+      "get": {
+        "summary": "Create response to http ping request.",
+        "description": "**Example request** :\n\n**Example response** :",
+        "parameters": [
+          {
+            "name": "Accept",
+            "description": "The response content type depends on Accept header",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "description": "Optional authentication token.",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[OK](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)\n\nNo error",
+            "headers": {
+              "Content-Type": {
+                "description": "This depends on Accept header of request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-debug-info": {
+          "type": "desc",
+          "children": [
+            {
+              "type": "desc_signature",
+              "children": [
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "GET "
+                    }
+                  ]
+                },
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "/ping"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "desc_content",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "Create response to http ping request."
+                    }
+                  ]
+                },
+                {
+                  "type": "comment",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":quickref: Ping response."
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example request"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "GET /ping HTTP/1.1\nHost: example.com\nAccept: application/json, text/javascript"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example response"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "HTTP/1.1 200 OK\nVary: Accept\nContent-Type: text/javascript\n{\n    \"message\": \"pong\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "type": "field_list",
+                  "children": [
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Request Headers"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "The response content type depends on\n"
+                                        },
+                                        {
+                                          "type": "literal_emphasis",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " header"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Authorization"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "Optional authentication token."
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Response Headers"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Content-Type"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "this depends on "
+                                        },
+                                        {
+                                          "type": "literal_emphasis",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "Accept"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "\nheader of request"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Status Codes"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "200 OK"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "No error"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "/(string:slug)": {
+      "get": {
+        "summary": "Redirect from short link.",
+        "description": "**Example request** :\n\n**Example response** :",
+        "responses": {
+          "302": {
+            "description": "[Found](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.3.3)\n\nSuccessful redirect"
+          }
+        },
+        "x-debug-info": {
+          "type": "desc",
+          "children": [
+            {
+              "type": "desc_signature",
+              "children": [
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "GET "
+                    }
+                  ]
+                },
+                {
+                  "type": "desc_name",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "/"
+                    }
+                  ]
+                },
+                {
+                  "type": "desc_parameterlist",
+                  "children": [
+                    {
+                      "type": "desc_annotation",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "string: "
+                        }
+                      ]
+                    },
+                    {
+                      "type": "desc_parameter",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "slug"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "desc_content",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "Redirect from short link."
+                    }
+                  ]
+                },
+                {
+                  "type": "comment",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":quickref: Link redirection."
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example request"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "GET /7yupBn HTTP/1.1\nHost: example.com\nAccept: application/json"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "strong",
+                      "children": [
+                        {
+                          "type": "Text",
+                          "children": [],
+                          "value": "Example response"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": ":"
+                    }
+                  ]
+                },
+                {
+                  "type": "literal_block",
+                  "children": [
+                    {
+                      "type": "Text",
+                      "children": [],
+                      "value": "HTTP/1.1 302 OK\nVary: Accept\nContent-Type: application/json"
+                    }
+                  ]
+                },
+                {
+                  "type": "field_list",
+                  "children": [
+                    {
+                      "type": "field",
+                      "children": [
+                        {
+                          "type": "field_name",
+                          "children": [
+                            {
+                              "type": "Text",
+                              "children": [],
+                              "value": "Status Codes"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "field_body",
+                          "children": [
+                            {
+                              "type": "bullet_list",
+                              "children": [
+                                {
+                                  "type": "list_item",
+                                  "children": [
+                                    {
+                                      "type": "paragraph",
+                                      "children": [
+                                        {
+                                          "type": "reference",
+                                          "children": [
+                                            {
+                                              "type": "Text",
+                                              "children": [],
+                                              "value": "302 Found"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": " \u2013 "
+                                        },
+                                        {
+                                          "type": "Text",
+                                          "children": [],
+                                          "value": "successful redirect"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

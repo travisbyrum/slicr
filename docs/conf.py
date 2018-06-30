@@ -42,7 +42,8 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinxcontrib.httpdomain',
     'sphinxcontrib.autohttp.flask',
-    'sphinxcontrib.autohttp.flaskqref'
+    'sphinxcontrib.autohttp.flaskqref',
+    'sphinxswagger'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
