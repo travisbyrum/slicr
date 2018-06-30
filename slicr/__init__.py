@@ -26,7 +26,7 @@ def create_app(config=TestConfig, **kwargs):
     """Application factory.
 
     :param config: Application configuration object, defaults to TestConfig
-    :param config: slicr.config, optional
+    :type config: slicr.config, optional
     :return: Slicr application.
     :rtype: flask.app.Flask
     """

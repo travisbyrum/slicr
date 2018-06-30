@@ -30,10 +30,9 @@ class LinkResource(Resource):
 
     @use_args(link_args)
     def post(self, args):
-        """
-        .. http:get:: /links
+        """Create shortened link.
 
-        Create shortened link.
+        .. :quickref: Link collection.
 
         **Example request**:
 

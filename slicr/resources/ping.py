@@ -18,10 +18,9 @@ class PingResource(Resource):
     endpoints = ['/ping']
 
     def get(self):
-        """
-        .. http:get:: /ping
+        """Create response to http ping request.
 
-        Create response to http ping request.
+        .. :quickref: Ping response.
 
         **Example request**:
 

@@ -19,10 +19,27 @@ default_blueprint = Blueprint('default_blueprint', __name__)
 
 @default_blueprint.route('/<string:slug>')
 def redirect_from_slug(slug):
-    """Redirects url based on short link.
+    """Redirect from short link.
 
-    :param slug: [description]
-    :type slug: [type]
+    .. :quickref: Link redirection.
+
+    **Example request**:
+
+    .. sourcecode:: http
+
+        GET /7yupBn HTTP/1.1
+        Host: example.com
+        Accept: application/json
+
+    **Example response**:
+
+    .. sourcecode:: http
+
+        HTTP/1.1 302 OK
+        Vary: Accept
+        Content-Type: application/json
+
+    :status 302: successful redirect
     """
 
     decoder = UrlEncoder(salt=current_app.config.get('ENCODER_SALT'))
