@@ -20,8 +20,7 @@ relationship = db.relationship
 
 
 class CrudMixin(object):
-    """Mixin object to add methods for saving, deleting, and updating
-    objects."""
+    """Mixin for convenient crud methods."""
 
     def to_dict(self):
         """Method to convert object to dictionary for serialization."""
@@ -52,14 +51,9 @@ class CrudMixin(object):
         """Remove the record from the database."""
 
         db.session.delete(self)
-
         db.session.commit()
 
-
-class Model(CrudMixin, db.Model):
-    """Base model class that includes CRUD convenience methods."""
-
-    __abstract__ = True
+        return self
 
 
 # pylint: disable=C0103
@@ -77,23 +71,32 @@ class PkMixin:
 
 
 class TimestampMixin(object):
-    """Update time."""
+    """Includes datetime columns for updating and creation."""
 
     created = column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated = column(db.DateTime, onupdate=datetime.utcnow)
 
 
-class Link(PkMixin, TimestampMixin, Model):
-    """Links resource schema."""
+class Model(CrudMixin, PkMixin, TimestampMixin, db.Model):
+    """Default model including convenience mixins."""
+
+    __abstract__ = True
+
+
+class Link(Model):
+    """Links model."""
 
     __tablename__ = 'links'
 
-    url = column(db.String(80))
+    url = column(db.String(80), nullable=False)
     salt = column(db.Integer, nullable=False)
+    clicks = column(db.Integer, nullable=False, default=0)
 
     @hybrid_property
     def slug(self):
-        """Note can only be called after flush."""
+        """Link slug as encoded by the url.
+
+        .. warning:: This property can only be called after flush."""
 
         encoder = UrlEncoder(salt=self.salt)
 
@@ -110,8 +113,8 @@ class Link(PkMixin, TimestampMixin, Model):
         return '<link: {}>'.format(self.id)
 
 
-class Domain(PkMixin, TimestampMixin, Model):
-    """Domain resource schema."""
+class Domain(Model):
+    """Domain model."""
 
     __tablename__ = 'domains'
 

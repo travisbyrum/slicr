@@ -25,6 +25,7 @@ def test_link_post(test_client, db):
 
     assert response.status_code == 200
     assert isinstance(response_data, dict)
+    assert isinstance(response_data.get('url'), str)
+    assert isinstance(response_data.get('type'), str)
     assert response_data.get('data').get('url') == test_url
-    assert response_data.get('url') == '/link'
-    assert response_data.get('type') == 'link'
+    assert response_data.get('data').get('clicks') == 0
