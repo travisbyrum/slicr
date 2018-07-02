@@ -8,6 +8,7 @@ PYTHON := $(PIPENV) run python
 
 PKG := slicr
 API_PORT ?= 5000
+TAG := $(PKG)
 
 all: clean clean-pyc install
 
@@ -30,6 +31,19 @@ coverage:
 	$(COVR) report
 
 .PHONY: coverage
+
+docker-build:
+	$(DOCKER) build --tag $(TAG) .
+
+.PHONY: docker-build
+
+docker-run:
+	$(DOCKER) run \
+	-p $(API_PORT):$(API_PORT) \
+	-d \
+	$(TAG)
+
+.PHONY: docker-run
 
 install-dev:
 	$(PIPENV) install --dev
