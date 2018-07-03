@@ -16,7 +16,11 @@ To install the development version of the api run:
 make install-dev
 ```
 
-To run the development server you can use the cli that comes with the package. This cli inherits all methods available through [Flask](http://flask.pocoo.org/docs/0.12/cli/).
+To run the development server you can use the cli that comes with the package. This cli inherits all methods available through [Flask](http://flask.pocoo.org/docs/0.12/cli/).  To install via [Docker](https://www.docker.com) run:
+
+```bash
+make docker-build && make docker-rin
+```
 
 ## Testing
 
