@@ -1,5 +1,7 @@
 # Slicr
 
+[![CircleCI](https://circleci.com/gh/travisbyrum/slicr.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/travisbyrum/slicr.svg?style=shield&circle-token=:circle-token)
+
 Slicr is a modular api designed to provide link management services including shortening and analytics.
 
 ## Installation
@@ -16,7 +18,7 @@ To install the development version of the api run:
 make install-dev
 ```
 
-To run the development server you can use the cli that comes with the package. This cli inherits all methods available through [Flask](http://flask.pocoo.org/docs/0.12/cli/).  To install via [Docker](https://www.docker.com) run:
+To run the development server you can use the cli that comes with the package. This cli inherits all methods available through [Flask](http://flask.pocoo.org/docs/0.12/cli/). To install via [Docker](https://www.docker.com) run:
 
 ```bash
 make docker-build && make docker-rin
