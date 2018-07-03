@@ -49,6 +49,7 @@ def redirect_from_slug(slug):
     slug_link = Link.query.filter_by(id=url_id).first()
 
     slug_link.clicks = slug_link.clicks + 1
+
     slug_link.update()
 
     return redirect(slug_link.url)

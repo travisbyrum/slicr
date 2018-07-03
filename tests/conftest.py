@@ -4,6 +4,8 @@ Created May 25, 2018
 @author: Travis Byrum
 """
 
+import os
+
 from click.testing import CliRunner
 import pytest
 
@@ -15,8 +17,11 @@ from slicr.models import db as test_db
 class CustomTestConfig(Config):
     """Testing configuration."""
 
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
     JSONIFY_PRETTYPRINT_REGULAR = True
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        'SQLALCHEMY_DATABASE_URI',
+        'sqlite://'
+    )
     WTF_CRSF_ENABLED = False
 
 

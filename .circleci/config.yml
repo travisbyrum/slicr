@@ -1,0 +1,74 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+        environment:
+          SQLALCHEMY_DATABASE_URI: postgresql://root@localhost/circle_test?sslmode=disable
+      - image: circleci/postgres:alpine-ram
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - pip-packages-v1-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          - pip-packages-v1-{{ .Branch }}-
+          - pip-packages-v1-
+
+      - run:
+          name: install dependencies
+          command: |
+            pip install pipenv
+            sudo pipenv install psycopg2
+            make install-dev
+
+      - save_cache:
+          paths:
+            - ~/.local/share/virtualenvs/venv
+          key: pip-packages-v1-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+
+      - run:
+          name: run tests
+          command: |
+            mkdir test-reports
+            pipenv run pytest tests --junitxml=test-reports/junit.xml
+
+      - store_test_results:
+          path: test-reports
+
+      - store_artifacts:
+          path: test-reports
+
+
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/python:3.6-stretch-browsers
+#         environment:
+#           FLASK_CONFIG: testing
+#           TEST_DATABASE_URL: postgresql://ubuntu@localhost/circle_test?sslmode=disable
+#       - image: circleci/postgres:9.6.5-alpine-ram
+#         environment:
+#           POSTGRES_USER: ubuntu
+#           POSTGRES_DB: circle_test
+#           POSTGRES_PASSWORD: ""
+#     steps:
+#       - restore_cache:
+#           keys:
+#             - pip-packages-v1-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+#             - pip-packages-v1-{{ .Branch }}-
+#             - pip-packages-v1-
+#       - save_cache:
+#           paths:
+#             - ~/.local/share/virtualenvs/venv
+#           key: pip-packages-v1-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
