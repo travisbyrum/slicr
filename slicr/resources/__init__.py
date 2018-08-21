@@ -12,6 +12,7 @@ from flask import Blueprint, jsonify, make_response
 
 from slicr.common import SlicrApi
 
+from .domains import DomainResource
 from .links import LinkResource
 from .ping import PingResource
 
@@ -20,7 +21,7 @@ slicr_blueprint = Blueprint('slicr_blueprint', __name__)
 slicr_api = SlicrApi(slicr_blueprint)
 
 
-SLICR_RESOURCES = [LinkResource, PingResource]
+SLICR_RESOURCES = [DomainResource, LinkResource, PingResource]
 
 
 @slicr_api.representation('application/json')
