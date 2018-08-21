@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 
 """
-slicr.models
-~~~~~~~~~~~~
-Api database models and utilities.
+slicr.models.common
+~~~~~~~~~~~~~~~~~~~
+Api model mixins and common utilities.
 
 :copyright: © 2018
 """
 
 from datetime import datetime
-from sqlalchemy.ext.hybrid import hybrid_property
 
-from slicr.encoder import UrlEncoder
 from slicr.extensions import db
 
 
@@ -19,7 +17,7 @@ column = db.Column
 relationship = db.relationship
 
 
-class CrudMixin(object):
+class CrudMixin:
     """Mixin for convenient crud methods."""
 
     def to_dict(self):
@@ -70,7 +68,7 @@ class PkMixin:
     )
 
 
-class TimestampMixin(object):
+class TimestampMixin:
     """Includes datetime columns for updating and creation."""
 
     created = column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -81,45 +79,3 @@ class Model(CrudMixin, PkMixin, TimestampMixin, db.Model):
     """Default model including convenience mixins."""
 
     __abstract__ = True
-
-
-class Link(Model):
-    """Links model."""
-
-    __tablename__ = 'links'
-
-    url = column(db.String(80), nullable=False)
-    salt = column(db.Integer, nullable=False)
-    clicks = column(db.Integer, nullable=False, default=0)
-
-    @hybrid_property
-    def slug(self):
-        """Link slug as encoded by the url.
-
-        .. warning:: This property can only be called after flush."""
-
-        encoder = UrlEncoder(salt=self.salt)
-
-        return encoder.encode(self.id)
-
-    def to_dict(self):
-        dictionary_out = super().to_dict()
-
-        dictionary_out.update({'slug': self.slug})
-
-        return dictionary_out
-
-    def __repr__(self):
-        return '<link: {}>'.format(self.id)
-
-
-class Domain(Model):
-    """Domain model."""
-
-    __tablename__ = 'domains'
-
-    user_id = column(db.Integer, nullable=False)
-    name = column(db.String(120), nullable=False)
-
-    def __repr__(self):
-        return '<domain: {}>'.format(self.name)
