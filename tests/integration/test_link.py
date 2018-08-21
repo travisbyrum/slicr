@@ -9,23 +9,33 @@ import json
 
 # pylint: disable=W0613
 def test_link_post(test_client, db):
-    """Test link resource."""
+    """Test create link resource."""
 
     test_url = 'https://www.google.com'
 
-    request_payload = {'url': test_url}
-
     response = test_client.post(
-        '/link',
-        data=json.dumps(request_payload),
+        '/links',
+        data=json.dumps({'url': test_url}),
         content_type='application/json'
     )
 
-    response_data = json.loads(response.data)
+    assert response.status_code == 201
+    assert isinstance(response.json, dict)
+    assert response.json.get('data').get('url') == test_url
+    assert response.json.get('data').get('clicks') == 0
+
+
+def test_link_get(test_client, test_link):
+    """Test get link resource."""
+
+    test_url = 'https://www.google.com'
+
+    response = test_client.get(
+        '/links/{}'.format(test_link.id),
+        content_type='application/json'
+    )
 
     assert response.status_code == 200
-    assert isinstance(response_data, dict)
-    assert isinstance(response_data.get('url'), str)
-    assert isinstance(response_data.get('type'), str)
-    assert response_data.get('data').get('url') == test_url
-    assert response_data.get('data').get('clicks') == 0
+    assert response.json.get('id') == test_link.id
+    assert response.json.get('data').get('url') == test_url
+    assert response.json.get('data').get('clicks') == 0

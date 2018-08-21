@@ -37,6 +37,7 @@ class PingResource(Resource):
             HTTP/1.1 200 OK
             Vary: Accept
             Content-Type: text/javascript
+
             {
                 "message": "pong"
             }
