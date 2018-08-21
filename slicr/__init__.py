@@ -19,9 +19,6 @@ from slicr.routes import default_blueprint
 __version__ = '0.0.1'
 
 
-BLUEPRINTS = [default_blueprint, slicr_blueprint]
-
-
 def create_app(config=TestConfig, **kwargs):
     """Application factory.
 
@@ -34,12 +31,20 @@ def create_app(config=TestConfig, **kwargs):
     app = Flask(__name__)
     app.config.from_object(config)
 
+    app = setup_application(app, **kwargs)
+
+    return app
+
+
+def setup_application(app, **kwargs):
+    """Register application blueprints and extensions."""
+
     for name, value in kwargs.items():
         setattr(app, name, value)
 
     db.init_app(app)
 
-    for blueprint in BLUEPRINTS:
+    for blueprint in [slicr_blueprint, default_blueprint]:
         app.register_blueprint(blueprint)
 
     return app

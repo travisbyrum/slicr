@@ -11,6 +11,7 @@ Domain data modeling.
 from marshmallow import Schema, fields
 
 from slicr.extensions import db
+
 from .common import Model, column, relationship
 
 
