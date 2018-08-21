@@ -58,3 +58,7 @@ def delete():
     click.echo('deleting database...')
 
     db.drop_all()
+
+
+if __name__ == '__main__':
+    main()
