@@ -12,7 +12,7 @@ import os
 
 
 class Config:
-    """Default configuration for slcr application.  This object is meant for
+    """Default configuration for slicr application.  This object is meant for
     consumption by `Flask <http://flask.pocoo.org/>`_.
     """
 
@@ -33,7 +33,7 @@ class Config:
         )
     )
 
-    ENCODER_SALT = os.getenv('ENCODER_SALT', 0)
+    ENCODER_SALT = int(os.getenv('ENCODER_SALT', '0'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SUPPORTED_LOCALES = ['en']
 
@@ -48,4 +48,5 @@ class TestConfig(Config):
     ASSETS_DEBUG = True
     DEBUG = True
     JSONIFY_PRETTYPRINT_REGULAR = True
+    TESTING = True
     WTF_CRSF_ENABLED = False
